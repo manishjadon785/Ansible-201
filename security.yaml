@@ -1,0 +1,11 @@
+---
+- name: Restart sshd when empty password inserted
+ lineinfile:
+ state: present
+ dest: /etc/ssh/sshd_config
+ regexp: ^#?PermitEmptyPasswords
+ line: PermitEmptyPasswords no
+ validate: sshd -tf %s
+ notify: restart sshd
+
+... 

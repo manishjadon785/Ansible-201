@@ -1,0 +1,19 @@
+Tasks : Rollback
+---
+
+- name: Rollback of config - Running config
+  cnos_rolback:
+      host: "{{ inventory_hostname }}"
+      username: "{{ hostvars[inventory_hostname]['ansible_ssh_user'] }}"
+      password: "{{ hostvars[inventory_hostname]['ansible_ssh_pass'] }}"
+      deviceType: "{{ hostvars[inventory_hostname]['deviceType'] }}"
+      enablePassword: "{{ hostvars[inventory_hostname]['enablePassword'] }}"
+      outputfile: "./results/test_rollback_{{ inventory_hostname }}_output.txt"
+      configType: running-config
+      protocol: "sftp"
+      serverip: "10.47.140.233"
+      rcpath: "/root/mjadon/running-config.txt"
+      serverusername: "root"
+      serverpassword: "r00t"
+	  
+...
